@@ -1,0 +1,23 @@
+{
+  "name": "cp-twitter-bot",
+  "version": "1.0.0",
+  "description": "Twitter bot to retweet tweets marked with #codeforgood, #civictech, #codebridge, #nonprofit, #opensource",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Schalk Neethling",
+  "license": "MIT",
+  "dependencies": {
+    "twit": "2.2.11",
+    "unique-random-array": "1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThirdWorldProblems/cp-twitter-bot/"
+  },
+  "keywords": [
+    "bot",
+    "twitter"
+  ]
+}
