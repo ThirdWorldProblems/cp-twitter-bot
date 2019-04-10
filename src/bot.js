@@ -52,7 +52,7 @@ var retweet = function() {
             // grab ID of tweet to retweet
             try {
                 // try get tweet id, derp if not
-                var retweetId = data.statuses[0].id_str
+                var retweetId = data.statuses[getRandomInt(0, data.statuses.length)].id_str
             }
             catch (e) {
                 console.log('retweetId DERP! ', e.message, ' Query String: ' + paramQS)
@@ -76,6 +76,10 @@ var retweet = function() {
             console.log('Something went wrong while SEARCHING...')
         }
     });
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 // retweet on bot start
