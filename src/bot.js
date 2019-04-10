@@ -48,7 +48,7 @@ var retweet = function() {
         if (!err) {
 
             for (item in data) {
-                console.log('retweet results, ' + item, data[item]);
+                console.log('retweet results, ' + item, data[item.entities.hashtags]);
             }
 
             // grab ID of tweet to retweet

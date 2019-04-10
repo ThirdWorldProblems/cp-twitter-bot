@@ -1,3 +1,3 @@
 module.exports = {
-    autoReply: true
+    autoReply: false
 };
