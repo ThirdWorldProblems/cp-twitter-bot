@@ -4,7 +4,8 @@ module.exports = {
         '#civictech',
         '#codebridge',
         '#nonprofit',
-        '#opensource'
+        '#opensource',
+        '#hackathon'
     ],
     queryStringSubQuery: [
         '',
