@@ -8,8 +8,8 @@ var strings = require('./helpers/strings')
 var Twitter = new twit(config)
 
 // Frequency in minutes
-var retweetFrequency = 5
-var favoriteFrequency = 5
+var retweetFrequency = 1
+var favoriteFrequency = 1
 
 // RANDOM QUERY STRING  =========================
 
@@ -17,8 +17,6 @@ var qs = ura(strings.queryString)
 var qsSq = ura(strings.queryStringSubQuery)
 var rt = ura(strings.resultType)
 var rs = ura(strings.responseString)
-
-console.log(botConfig)
 
 // https://dev.twitter.com/rest/reference/get/search/tweets
 // A UTF-8, URL-encoded search query of 500 characters maximum, including operators.
@@ -42,9 +40,13 @@ var retweet = function() {
         result_type: paramRT,
         lang: 'en'
     };
+
+    console.log('retweet params, ' + params);
+
     Twitter.get('search/tweets', params, function(err, data) {
         // if there no errors
         if (!err) {
+            console.log('retweet results, ' + data);
             // grab ID of tweet to retweet
             try {
                 // try get tweet id, derp if not
@@ -92,8 +94,12 @@ var favoriteTweet = function() {
         lang: 'en'
     }
 
+    console.log('favourite tweet params, ' + params);
+
     // find the tweet
     Twitter.get('search/tweets', params, function(err, data) {
+
+        console.log('favourite tweet results, ' + data);
 
         // find tweets
         var tweet = data.statuses;
