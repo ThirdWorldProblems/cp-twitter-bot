@@ -24,6 +24,7 @@ function getRandomInt(min, max) {
 
 // function to generate a random tweet tweet
 function ranDom(arr) {
+    var length = arr ? arr.length : 1;
     return arr[getRandomInt(0, length)];
 }
 
@@ -100,13 +101,8 @@ var favoriteTweet = function() {
         lang: 'en'
     }
 
-    console.log('favourite tweet params, ', paramQS);
-
     // find the tweet
     Twitter.get('search/tweets', params, function(err, data) {
-
-        console.log('favourite tweet results, ', data.statuses.length);
-
         // find tweets
         var tweet = data.statuses;
         var randomTweet = ranDom(tweet); // pick a random tweet
