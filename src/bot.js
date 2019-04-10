@@ -41,15 +41,13 @@ var retweet = function() {
         lang: 'en'
     };
 
-    console.log('retweet params, ' + params);
+    console.log('retweet params, ' + paramQS);
 
     Twitter.get('search/tweets', params, function(err, data) {
         // if there no errors
         if (!err) {
 
-            for (item in data) {
-                console.log('retweet results, ' + item, data[item.entities.hashtags]);
-            }
+            console.log('retweet results, ', data.length);
 
             // grab ID of tweet to retweet
             try {
@@ -98,12 +96,12 @@ var favoriteTweet = function() {
         lang: 'en'
     }
 
-    console.log('favourite tweet params, ' + params);
+    console.log('favourite tweet params, ', paramQS);
 
     // find the tweet
     Twitter.get('search/tweets', params, function(err, data) {
 
-        console.log('favourite tweet results, ' + data);
+        console.log('favourite tweet results, ' + data.length);
 
         // find tweets
         var tweet = data.statuses;
