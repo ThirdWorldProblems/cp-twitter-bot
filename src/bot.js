@@ -18,6 +18,15 @@ var qsSq = ura(strings.queryStringSubQuery)
 var rt = ura(strings.resultType)
 var rs = ura(strings.responseString)
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+// function to generate a random tweet tweet
+function ranDom(arr) {
+    return arr[getRandomInt(0, length)];
+}
+
 // https://dev.twitter.com/rest/reference/get/search/tweets
 // A UTF-8, URL-encoded search query of 500 characters maximum, including operators.
 // Queries may additionally be limited by complexity.
@@ -41,14 +50,9 @@ var retweet = function() {
         lang: 'en'
     };
 
-    console.log('retweet params, ' + paramQS);
-
     Twitter.get('search/tweets', params, function(err, data) {
         // if there no errors
         if (!err) {
-
-            console.log('retweet results, ', data.statuses.length);
-
             // grab ID of tweet to retweet
             try {
                 // try get tweet id, derp if not
@@ -76,10 +80,6 @@ var retweet = function() {
             console.log('Something went wrong while SEARCHING...')
         }
     });
-}
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 // retweet on bot start
@@ -189,11 +189,4 @@ function tweetNow(tweetTxt) {
             }
         })
     }
-}
-
-// function to generate a random tweet tweet
-function ranDom(arr) {
-    var length = arr ? arr.length : 1;
-    var index = Math.floor(Math.random() * length);
-    return arr[index];
 }
