@@ -46,7 +46,11 @@ var retweet = function() {
     Twitter.get('search/tweets', params, function(err, data) {
         // if there no errors
         if (!err) {
-            console.log('retweet results, ' + data);
+
+            for (item in data) {
+                console.log('retweet results, ' + item, data[item]);
+            }
+
             // grab ID of tweet to retweet
             try {
                 // try get tweet id, derp if not
@@ -129,9 +133,13 @@ favoriteTweet()
 setInterval(favoriteTweet, 60000 * favoriteFrequency)
 
 if (botConfig.autoReply) {
-    // STREAM API for interacting with a USER =======
-    // set up a user stream
-    var stream = Twitter.stream('user')
+    try {
+        // STREAM API for interacting with a USER =======
+        // set up a user stream
+        var stream = Twitter.stream('user')
+    } catch (err) {
+        console.error('Error while setting up stream', err);
+    }
 
     // REPLY-FOLLOW BOT ============================
 
