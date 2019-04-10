@@ -47,7 +47,7 @@ var retweet = function() {
         // if there no errors
         if (!err) {
 
-            console.log('retweet results, ', data.length);
+            console.log('retweet results, ', data.statuses.length);
 
             // grab ID of tweet to retweet
             try {
@@ -101,7 +101,7 @@ var favoriteTweet = function() {
     // find the tweet
     Twitter.get('search/tweets', params, function(err, data) {
 
-        console.log('favourite tweet results, ' + data.length);
+        console.log('favourite tweet results, ', data.statuses.length);
 
         // find tweets
         var tweet = data.statuses;
